@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:16
+    env_file:
+      - .env
+    container_name: teamfinder_db
+    ports:
+      - "5436:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  postgres_data:
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 10.201.0.0/24
